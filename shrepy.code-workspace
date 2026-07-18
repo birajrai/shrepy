@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "shrepy-backend"
+		},
+		{
+			"path": "shrepy-app"
+		},
+		{
+			"path": "shrepy-admin"
+		},
+		{
+			"path": "shrepy-storefront"
+		}
+	],
+	"settings": {}
+}
