@@ -6,46 +6,32 @@ Multi-tenant e-commerce platform for South Asia (India, Nepal). Monorepo with 6 
 
 | Directory | Purpose | Tech | Tests |
 |---|---|---|---|
-| `shrepy-common` | Shared types, constants, utilities | TypeScript, Vitest | `bun run test` |
 | `shrepy-backend` | REST API server | NestJS 11, Drizzle ORM, PostgreSQL, Bun | `bun run test` (Jest) |
 | `shrepy-app` | Merchant dashboard (SPA) | React 19, Mantine UI, TanStack Router, Vite | none |
 | `shrepy-admin` | Internal admin panel | React 19, React Router 8, Tailwind CSS | none |
 | `shrepy-storefront` | Customer-facing storefront | React 19, React Router 8, Tailwind CSS | none |
 | `shrepy-static` | Marketing site (shrepy.com) | React 18, Vite 5, Tailwind CSS 3 | none |
 
-## Build Order
-
-`shrepy-common` **must** be built first. All other packages depend on it via `file:../shrepy-common` and import from its `dist/`.
-
-```
-cd shrepy-common && bun install && bun run build
-```
-
-Then install/build any other package independently.
 
 ## Commands
 
 Each package uses `bun` as runtime and package manager.
 
-| Command | shrepy-common | shrepy-backend | shrepy-app | shrepy-admin | shrepy-storefront | shrepy-static |
-|---|---|---|---|---|---|---|
-| install | `bun install` | `bun install` | `bun install` | `bun install` | `bun install` | `bun install` |
-| dev | — | `bun run start:dev` | `bun run dev` | `bun run dev` | `bun run dev` | `bun run dev` |
-| build | `bun run build` | `bun run build` | `bun run build` | `bun run build` | `bun run build` | `bun run build` |
-| test | `bun run test` | `bun run test` | — | — | — | — |
-| typecheck | — | — | `bun run typecheck` | `bun run typecheck` | `bun run typecheck` | — |
-| lint | — | `bun run lint` | — | — | — | — |
+| Command | shrepy-backend | shrepy-app | shrepy-admin | shrepy-storefront | shrepy-static |
+|---|---|---|---|---|---|
+| install | `bun install` | `bun install` | `bun install` | `bun install` | `bun install` |
+| dev | `bun run start:dev` | `bun run dev` | `bun run dev` | `bun run dev` | `bun run dev` |
+| build | `bun run build` | `bun run build` | `bun run build` | `bun run build` | `bun run build` |
+| test | `bun run test` | — | — | — | — |
+| typecheck | — | `bun run typecheck` | `bun run typecheck` | `bun run typecheck` | — |
+| lint | `bun run lint` | — | — | — | — |
 
 **Never run, start, or kill dev servers** (`start:dev`, `vite`, `react-router dev`, `nest start`). If the user needs to start one, tell them the one-liner (e.g. "run `bun run start:dev` from `shrepy-backend/`"). To test API changes, use `curl` against the running server instead.
 
-## The `fix-common.cjs` Preinstall Hook
-
-Four packages (`shrepy-backend`, `shrepy-app`, `shrepy-admin`, `shrepy-storefront`) run `scripts/fix-common.cjs` on `bun install`. This script auto-switches the `@shrepy/common` dependency between `file:../shrepy-common` (local monorepo) and `*` (GitLab registry) based on whether the local directory exists. **Do not manually edit the `@shrepy/common` dependency** in these package.json files — the script handles it.
 
 ## Testing
 
 - **Backend**: Jest, tests match `*.spec.ts` in `src/`. Run with `bun run test` from `shrepy-backend/`.
-- **Common**: Vitest, tests in `src/__tests__/`. Run with `bun run test` from `shrepy-common/`.
 - **Frontends**: No test suites configured.
 - **API testing**: Use `curl` against the running server (e.g. `curl http://localhost:3000/api/health`). Never start the server yourself.
 
