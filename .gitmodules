@@ -1,0 +1,18 @@
+[submodule "shrepy-common"]
+	path = shrepy-common
+	url = https://github.com/birajrai/shrepy-common.git
+[submodule "shrepy-backend"]
+	path = shrepy-backend
+	url = https://github.com/birajrai/shrepy-backend.git
+[submodule "shrepy-app"]
+	path = shrepy-app
+	url = https://github.com/birajrai/shrepy-app.git
+[submodule "shrepy-admin"]
+	path = shrepy-admin
+	url = https://github.com/birajrai/shrepy-admin.git
+[submodule "shrepy-storefront"]
+	path = shrepy-storefront
+	url = https://github.com/birajrai/shrepy-storefront.git
+[submodule "shrepy-static"]
+	path = shrepy-static
+	url = https://github.com/birajrai/shrepy-static.git
