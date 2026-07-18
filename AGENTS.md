@@ -36,7 +36,7 @@ Each package uses `bun` as runtime and package manager.
 | typecheck | — | — | `bun run typecheck` | `bun run typecheck` | `bun run typecheck` | — |
 | lint | — | `bun run lint` | — | — | — | — |
 
-**Do NOT run dev servers** (`start:dev`, `vite`, `react-router dev`). The user runs those manually.
+**Never run, start, or kill dev servers** (`start:dev`, `vite`, `react-router dev`, `nest start`). If the user needs to start one, tell them the one-liner (e.g. "run `bun run start:dev` from `shrepy-backend/`"). To test API changes, use `curl` against the running server instead.
 
 ## The `fix-common.cjs` Preinstall Hook
 
@@ -47,6 +47,7 @@ Four packages (`shrepy-backend`, `shrepy-app`, `shrepy-admin`, `shrepy-storefron
 - **Backend**: Jest, tests match `*.spec.ts` in `src/`. Run with `bun run test` from `shrepy-backend/`.
 - **Common**: Vitest, tests in `src/__tests__/`. Run with `bun run test` from `shrepy-common/`.
 - **Frontends**: No test suites configured.
+- **API testing**: Use `curl` against the running server (e.g. `curl http://localhost:3000/api/health`). Never start the server yourself.
 
 ## Code Style
 
