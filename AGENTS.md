@@ -79,3 +79,7 @@ Each package (except `shrepy-common` and `shrepy-static`) has a `Dockerfile` and
 
 - [`shrepy-backend/AGENTS.md`](shrepy-backend/AGENTS.md) — detailed backend architecture, auth, API routes
 - [`shrepy-static/AGENTS.md`](shrepy-static/AGENTS.md) — static site build system, blog, SEO
+
+## MCP
+
+Context7 MCP server is configured for looking up docs. Add `use context7` to prompts when you need to reference framework docs (React, NestJS, Drizzle, Tailwind, etc.).
