@@ -13,6 +13,3 @@
 [submodule "shrepy-storefront"]
 	path = shrepy-storefront
 	url = https://github.com/birajrai/shrepy-storefront.git
-[submodule "shrepy-static"]
-	path = shrepy-static
-	url = https://github.com/birajrai/shrepy-static.git
